@@ -9,7 +9,7 @@ module ActiveJob
     class Adapter
       using PubsubExtension
 
-      def initialize(async: true, pubsub: Google::Cloud::Pubsub.new, logger: Logger.new($stdout))
+      def initialize(async: true, pubsub: Google::Cloud::Pubsub.new(project_id: ENV['GOOGLE_CLOUD_PROJECT']), logger: Logger.new($stdout))
         @executor = async ? :io : :immediate
         @pubsub   = pubsub
         @logger   = logger
