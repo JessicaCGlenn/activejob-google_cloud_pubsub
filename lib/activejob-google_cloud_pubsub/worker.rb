@@ -33,8 +33,8 @@ module ActiveJob
             }.rescue {|e|
               @logger&.error e
             }
-          rescue Concurrent::RejectedExecutionError
-            puts e
+          rescue Concurrent::RejectedExecutionError => er
+            puts er
             Concurrent::Promise.execute(args: message) {|msg|
               msg.delay! 10.seconds.to_i
 
