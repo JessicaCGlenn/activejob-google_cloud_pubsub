@@ -3,6 +3,8 @@
 require 'activejob-google_cloud_pubsub'
 require 'optparse/kwargs'
 
+puts "jcg version"
+
 Version = ActiveJob::GoogleCloudPubsub::VERSION
 
 opts = {
